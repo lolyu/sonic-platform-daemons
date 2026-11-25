@@ -1,0 +1,28 @@
+#!/usr/bin/make -f
+# ycabled-rs for pmon, built in sonic-slave-trixie.
+#
+# cargo and rustc are not in Build-Depends: the slave installs Rust with
+# rustup under /usr/.cargo and puts it on PATH, so there are no Debian
+# packages for dpkg-checkbuilddeps to find. PyO3 links the libpython of the
+# python3 on PATH, which must be pmon's Python (3.13 on trixie). build.rs
+# reads the SoC proto from ../sonic-ycabled.
+
+%:
+	dh $@
+
+override_dh_auto_configure:
+	:
+
+override_dh_auto_build:
+	cargo build --release --locked
+
+override_dh_auto_install:
+	:
+
+# The unit tests need a redis-server, which the slave does not have; build.sh
+# runs them (README.md).
+override_dh_auto_test:
+	:
+
+override_dh_auto_clean:
+	rm -rf target

@@ -106,6 +106,12 @@ changed), and the cargo registry persists in the `ycabled-rs-cargo-<uid>`
 volume (`YCABLED_RS_CARGO_VOLUME`). The binary is
 `target/release/ycabled-rs`.
 
+For pmon, sonic-buildimage builds the `sonic-ycabled-rs` Debian package
+(`debian/`) in sonic-slave-trixie, which puts the binary in `/usr/bin`. The
+202605 slave has Rust 1.86, hence `rust-version` and the `icu_*` versions in
+`Cargo.lock`. pmon's supervisord configuration starts it as program
+`ycabled` where `use_rust_ycabled` selects it.
+
 ## Run
 
 `ycabled-rs` takes no arguments. Like Python ycabled it reads

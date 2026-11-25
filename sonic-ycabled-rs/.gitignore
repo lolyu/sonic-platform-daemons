@@ -1,1 +1,9 @@
 /target
+# dpkg-buildpackage leftovers, if a build stops before its clean step
+/debian/.debhelper/
+/debian/sonic-ycabled-rs/
+/debian/sonic-ycabled-rs-dbgsym/
+/debian/debhelper-build-stamp
+/debian/files
+/debian/*.substvars
+/debian/*.debhelper.log

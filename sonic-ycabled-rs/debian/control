@@ -1,0 +1,16 @@
+Source: sonic-ycabled-rs
+Maintainer: SONiC Team <sonic-dev@lists.sonicfoundation.dev>
+Section: net
+Priority: optional
+Build-Depends: debhelper-compat (= 13), protobuf-compiler, python3-dev
+Standards-Version: 4.7.0
+
+Package: sonic-ycabled-rs
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: SONiC Y-cable daemon in Rust
+ ycabled-rs serves the same tables as the Python ycabled of
+ sonic-platform-daemons, with the same fields and values, so that
+ orchagent, linkmgrd, xcvrd and the muxcable CLI work with either. pmon
+ runs one or the other, as use_rust_ycabled in pmon_daemon_control.json
+ selects.
